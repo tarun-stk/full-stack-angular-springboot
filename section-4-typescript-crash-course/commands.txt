@@ -1,0 +1,28 @@
+Commands:
+	
+	node --version
+		-node version
+	
+	npm --version
+	
+	npm install -g typescript@4.6.4
+		-install typescript of mentioned version
+		
+	tsc --version
+	
+	tsc  <filename with .ts extension>
+		-compiles ts file and adds a replica of js file
+
+	tsc --noEmitOnError <filename with .ts extension>
+		-generated a .js file only when current file doesn't have any compile time errors
+
+	tsc --init
+		-creates tsconfig.json file
+		-by using this file you can define, your compile options in file itself, so that 
+			you don't have to type in evry Commands
+			like tsc --noEmitOnError Customer.ts
+			instead of above, you can simply give 'tsc', and noEmitOnError will be applied automatically
+			& also all the .ts will be compiled into .js files  
+	
+	tsc --build --clean
+		-removes old .js files which were generated clean up.
