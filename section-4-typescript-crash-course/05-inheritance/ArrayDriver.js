@@ -4,8 +4,14 @@ const Shape_1 = require("./Shape");
 const Circle_1 = require("./Circle");
 const Rectangle_1 = require("./Rectangle");
 let myShape = new Shape_1.Shape(10, 20);
-console.log(myShape.getInfo());
 let myCircle = new Circle_1.Circle(10, 10, 5);
-console.log(myCircle.getInfo());
 let myRectangle = new Rectangle_1.Rectangle(10, 10, 10, 1);
-console.log(myRectangle.getInfo());
+// declare array of shapes
+let theShapes = [];
+theShapes.push(myShape);
+theShapes.push(myCircle);
+theShapes.push(myRectangle);
+// theShapes.push("myRectangle");  -> can't do because it will acceot only shape
+for (let tempShape of theShapes) {
+    console.log(tempShape.getInfo());
+}

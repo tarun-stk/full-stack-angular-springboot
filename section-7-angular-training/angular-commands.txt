@@ -1,0 +1,9 @@
+to install angular:
+    npm uninstall -g @angular/cli
+    npm install --location=global @angular/cli@14.0.7
+
+verify installation:
+    ng v
+
+to create a new angular porject:
+    ng new <project-name>
