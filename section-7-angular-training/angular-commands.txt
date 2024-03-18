@@ -7,3 +7,25 @@ verify installation:
 
 to create a new angular porject:
     ng new <project-name>
+
+to create a new component:
+    ng generate component <compo name>
+    creates four files -> .ts, .css, .html, .spec.ts
+
+to create ts class
+    ng generate class sales-person-list/SalesPerson
+    ng generate class <destination>/<classname>
+
+to create angular service
+	ng generate service <destination>/<serviceclassname>
+	
+to install bootstrap locally
+	npm install boostrap@5.2.0
+	-add the file location in angular.json file under styles, so that angular can pick styles
+	-this step is done, so that you don't have to manually add cdn links in template files
+	-node_modules/bootstrap/dist/css/bootstrap.min.css
+	
+to install fontawesome loaclly
+	npm install @fortawesome/fontawesome-free
+	-node_modules/@fortawesome/fontawesome-free/css/all.min.css
+	-follow same steps as in bootstrap
