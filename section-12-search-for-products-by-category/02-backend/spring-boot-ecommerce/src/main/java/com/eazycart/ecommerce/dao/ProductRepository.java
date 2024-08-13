@@ -32,3 +32,16 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 //    because empty val matches with all prods
     Page<Product> findByNameContaining(@Param("name") String name, Pageable pageable);
 }
+
+//Update on pagination
+//springboot gives pagination support out of the box
+//url url: http://localhost:8080/api/products?page=1&size=10
+//page: pagenumber -> 0 indexing
+//size: number of items that will be displayed on page
+//below is the output that will be generated at the end of response body by using above api
+//  "page":{
+//          "size":10,  - size of current/each page
+//          "totalElements":105,  - total elements in database
+//          "totalPages":11, - total pages that fulfill whole items in db
+//          "number":1 - current page number
+//          }

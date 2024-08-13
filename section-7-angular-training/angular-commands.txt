@@ -29,3 +29,11 @@ to install fontawesome loaclly
 	npm install @fortawesome/fontawesome-free
 	-node_modules/@fortawesome/fontawesome-free/css/all.min.css
 	-follow same steps as in bootstrap
+
+to add angular locally
+	ng add @angular/localize
+
+to install ng-bootstrap -> gives some builtin features which support angular
+	npm i @ng-bootstrap/ng-bootstrap
+	-Also add @NgbModule in app.module.ts in @NgModule(imports) section at top
+	so that angular can recognize this globally

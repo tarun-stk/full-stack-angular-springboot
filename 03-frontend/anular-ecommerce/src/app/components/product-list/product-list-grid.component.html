@@ -15,7 +15,7 @@
                             <h1 routerLink="/products/{{ tempProduct.id }}">{{ tempProduct.name }}</h1>
                         </a>
                         <div class="price">{{ tempProduct.unitPrice | currency:'USD' }}</div>
-                        <a href="#" class="primary-btn">Add to cart</a>
+                        <button (click)="addToCart(tempProduct)" class="btn btn-primary btn-sm">Add to cart</button>
                     </div>
 
                 </div>
@@ -27,6 +27,55 @@
                 </div>
 
             </div>
+
+             <!-- begin footer -->
+             <div class="footer-pagination">
+                <div class="row">
+                    <div class="col-md-6"></div>
+
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-9" style="padding-left: 30%">
+                                <!-- [()]  is a two way binding in angular also known as banana in a box -->
+                                <!-- updating value in html will also update correspo val in ts also updating value in ts will update val in html -->
+                                <!-- [] one way binding -->
+                                <!-- html will get vals from ts -->
+                                <!-- page, pageSize, collectionSize, pageChange are ngb-pagination parameters -->
+                                <!-- where as thePageNumber, thePageSize are attributes of component -->
+                                <!-- () -> event binding, calls mentioned method in there -->
+                                <!-- maxSize -> this will show only mentioned noof pages on screen -->
+                                <!-- boundaryLinks will give your << << >> >> buttons wich will allow
+                                user to jump to first and last page -->
+                                <!-- more info on ngb-pagination ng-bootstrap.github.io -->
+                                <ngb-pagination [(page)]="thePageNumber"
+                                                [pageSize]="thePageSize"
+                                                [collectionSize]="theTotalElements"
+                                                [maxSize]="5"
+                                                [boundaryLinks]="true"
+                                                (pageChange)="listProducts()">
+
+                                </ngb-pagination>
+
+                            </div>
+
+                            <!-- page size selector -->
+                            <div class="col-md-3 mt-2" style="text-align: right;">
+                                <span class="mr-2">Page Size</span>
+                                <select #myPageSelect (change)="updatePageSize(myPageSelect.value)">
+                                    <option selected="true">5</option>
+                                    <option>10</option>
+                                    <option>20</option>
+                                    <option>50</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- end footer -->
+
         </div>
     </div>
 </div>

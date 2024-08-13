@@ -1,7 +1,9 @@
 package com.eazycart.ecommerce.config;
 
+import com.eazycart.ecommerce.entity.Country;
 import com.eazycart.ecommerce.entity.Product;
 import com.eazycart.ecommerce.entity.ProductCategory;
+import com.eazycart.ecommerce.entity.State;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.metamodel.EntityType;
 import lombok.extern.slf4j.Slf4j;
@@ -32,26 +34,28 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         HttpMethod[] theUnsupportedActions = {HttpMethod.DELETE, HttpMethod.POST, HttpMethod.PUT};
 
 //        disbale http methods for product POST, PUt & Delete
-        config.getExposureConfiguration()
-//                for Product
-                .forDomainType(Product.class)
-//                for single items
-                .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)))
-//                for collection of items
-                .withCollectionExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)));
+        disableHttpMethod(Product.class, config, theUnsupportedActions);
 
         //        disbale http methods for ProductCategory POST, PUt & Delete
-        config.getExposureConfiguration()
-//                for ProductCategory
-                .forDomainType(ProductCategory.class)
-//                for single items
-                .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)))
-//                for collection of items
-                .withCollectionExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)));
+        disableHttpMethod(ProductCategory.class, config, theUnsupportedActions);
+        //        disbale http methods for State POST, PUt & Delete
+        disableHttpMethod(State.class, config, theUnsupportedActions);
+        //        disbale http methods for Country POST, PUt & Delete
+        disableHttpMethod(Country.class, config, theUnsupportedActions);
 
         // call an internal helper method
         exposeIds(config);
 
+    }
+
+    private static void disableHttpMethod(Class theClass, RepositoryRestConfiguration config, HttpMethod[] theUnsupportedActions) {
+        config.getExposureConfiguration()
+//                for Product
+                .forDomainType(theClass)
+//                for single items
+                .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)))
+//                for collection of items
+                .withCollectionExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)));
     }
 
 //    By default we're not getting id's displayed inside product categories
